@@ -3,19 +3,108 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+   --background: #ffffff;
+   --foreground: #171717;
+   --button-background: teal;
+   --secondry-color: #757575;
+   --input-border-color: #ddd;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+   color: var(--foreground);
+   background: var(--background);
+   font-family: 'Inter 28 Pt', Arial, sans-serif;
+}
+
+.custom-input {
+   border: 1px solid var(--input-border-color);
+   outline: '#34c759';
+   border-radius: 10px;
+   font-size: 20px;
+   color: var(--secondry-color);
+}
+
+.custom-input:focus {
+   border-color: #34c759; /* Green border on focus */
+   outline: 1px solid #34c759; /* Green outline on focus */
+}
+
+.custom-input::placeholder {
+   color: var(--secondry-color);
+}
+
+.border {
+   border: 1px solid var(--input-border-color);
+}
+.react-tel-input {
+   border: 1px solid var(--input-border-color);
+   border-radius: 10px;
+   color: var(--secondry-color);
+   padding: 10px;
+   font-size: 40px;
+   width: 100%;
+   display: flex;
+   align-items: center;
+   transition: border 0.3s ease-in-out;
+   padding: 0;
+}
+
+.react-tel-input:focus-within {
+   border-color: #34c759; /* Green border on focus */
+   outline: 1px solid #34c759; /* Green outline on focus */
+}
+
+/* Input field inside react-tel-input */
+.react-tel-input input {
+   border: none;
+   outline: none;
+   color: var(--secondry-color);
+   width: 100%;
+   height: 100%;
+   padding: 8px 12px;
+   background: transparent;
+   font-size: 20px;
+}
+
+.react-tel-input .form-control {
+   border: none;
+   outline: none;
+   font-size: 40px;
+   width: 100%;
+   height: 100%;
+   padding: 30px;
+}
+
+.react-tel-input input::placeholder {
+   color: var(--secondry-color);
+   opacity: 0.6;
+}
+
+.react-tel-input .flag-dropdown {
+   border: 1px solid var(--input-border-color);
+   border-radius: 10px 0 0 10px;
+   background: white;
+   padding: 5px;
+   transition: border 0.3s ease-in-out;
+}
+
+.react-tel-input .flag-dropdown:focus-within {
+   border-color: #34c759;
+}
+
+.navbar {
+   backdrop-filter: blur(24px);
+   z-index: 999999;
+   -webkit-backdrop-filter: blur(24px);
+   backdrop-filter: blur(24px);
+   background-color: #f9fbf980;
+   border: 1px solid #000;
+   border-bottom: 1px #0000001a;
+   justify-content: center;
+   align-items: center;
+   min-height: 6rem;
+   padding: 0% 10%;
+   display: flex;
+   position: sticky;
+   top: 0;
 }
