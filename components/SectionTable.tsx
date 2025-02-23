@@ -1,58 +1,56 @@
 import { Box, Table, Text } from '@chakra-ui/react';
 
 interface IProps {
-   headers: string[];
    sectionHeader?: string;
+   tableData?: Record<string, any>[];
 }
 
-const SectionTable: React.FC<IProps> = ({ headers, sectionHeader }) => {
-   return (
+const SectionTable: React.FC<IProps> = ({ sectionHeader, tableData }) => {
+   const headers = tableData?.length ? Object.keys(tableData[0]) : [];
+
+   return headers?.length ? (
       <>
          {sectionHeader && (
-            <Text fontSize={24} fontWeight={600} mb={10} color={'#181818'} pb={2}>
+            <Text fontSize={20} fontWeight={600} mt={8} mb={4} color={'#181818'}>
                {sectionHeader}
             </Text>
          )}
-
-         <Table.Root size={'lg'} fontSize={16} fontWeight={500} border={'1px solid #ddd'}>
-            <Table.Header>
-               <Table.Row>
-                  {headers.map((header, index) => (
-                     <Table.ColumnHeader
-                        padding={'10px'}
-                        borderBottom={'1px solid #ddd'}
-                        color={'#757575'}
-                        fontWeight={500}
-                        py={6}
-                        textAlign={index === headers.length - 1 ? 'end' : 'start'}
-                        key={header}
-                     >
-                        {header}
-                     </Table.ColumnHeader>
-                  ))}
-               </Table.Row>
-            </Table.Header>
-            <Table.Body>
-               {items.map((item) => (
-                  <Table.Row key={item.id} border={'1px solid #ddd'} color={'#181818'}>
-                     <Table.Cell py={4}>{item.name}</Table.Cell>
-                     <Table.Cell>{item.category}</Table.Cell>
-                     <Table.Cell>{item.temp}</Table.Cell>
-                     <Table.Cell textAlign="end">{item.price}</Table.Cell>
+         <Box className="table-radius" overflow={'hidden'}>
+            <Table.Root size={'lg'} fontSize={16} fontWeight={500}>
+               <Table.Header>
+                  <Table.Row>
+                     {headers.map((header, index) => (
+                        <Table.ColumnHeader
+                           padding={'10px'}
+                           borderBottom={'1px solid #ddd'}
+                           color={'#757575'}
+                           fontWeight={500}
+                           py={6}
+                           textAlign={index === headers.length - 1 ? 'end' : 'start'}
+                           key={header}
+                        >
+                           {header}
+                        </Table.ColumnHeader>
+                     ))}
                   </Table.Row>
-               ))}
-            </Table.Body>
-         </Table.Root>
+               </Table.Header>
+               <Table.Body>
+                  {tableData?.map((item) => (
+                     <Table.Row key={item.id} borderBottom={'1px solid #ddd'} color={'#181818'}>
+                        {headers.map((header, index) => (
+                           <Table.Cell textAlign={index === headers.length - 1 ? 'end' : 'start'} py={4} key={index}>
+                              {item[header]}
+                           </Table.Cell>
+                        ))}
+                     </Table.Row>
+                  ))}
+               </Table.Body>
+            </Table.Root>
+         </Box>
       </>
+   ) : (
+      <></>
    );
 };
-
-const items = [
-   { id: 1, name: 'Laptop', category: 'Electronics', price: 999.99, temp: 'wewq' },
-   { id: 2, name: 'Coffee Maker', category: 'Home Appliances', price: 49.99, temp: 'wewq' },
-   { id: 3, name: 'Desk Chair', category: 'Furniture', price: 150.0, temp: 'wewq' },
-   { id: 4, name: 'Smartphone', category: 'Electronics', price: 799.99, temp: 'wewq' },
-   { id: 5, name: 'Headphones', category: 'Accessories', price: 199.99, temp: 'wewq' }
-];
 
 export default SectionTable;

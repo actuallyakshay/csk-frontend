@@ -1,15 +1,6 @@
-'use client';
-
-import { INavLinks } from '@/types';
-import { LOGO_URL } from '@/utils';
+import { LOGO_URL, navLinks } from '@/utils';
 import { Box, Flex, Image, Link } from '@chakra-ui/react';
 import NextLink from 'next/link';
-
-const navLinks: INavLinks[] = [
-   { name: 'Unlisted Shares', href: '/' },
-   { name: 'Our Blogs', href: '/' },
-   { name: 'Contact Us', href: '/' }
-];
 
 export default function Navbar() {
    return (

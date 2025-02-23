@@ -27,16 +27,16 @@ export type TimeFrame = 'daily' | 'weekly' | 'monthly';
 export interface ISection {
    id: string;
    sectionName: string;
-   data: object;
+   data: Record<string, any>[];
    createdAt: string;
    updatedAt: string;
    deletedAt: string;
 }
 
 export interface ISharePrice {
-   Type: string;
-   Labels: string;
-   Price: string;
+   type: string;
+   lables: string;
+   price: string;
 }
 
 export interface IChartData {

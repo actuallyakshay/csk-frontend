@@ -17,7 +17,7 @@ const FAQ = () => {
 
    return (
       <Box>
-         <Heading as="h1" fontSize={42} textAlign="center" mb={24}>
+         <Heading as="h1" fontSize={42} textAlign="center" mb={10}>
             <strong>FAQ's</strong>
          </Heading>
          <VStack>

@@ -19,7 +19,16 @@ import { useEffect, useState } from 'react';
 
 export default function Home() {
    const { getSections } = useAPI();
-   const [sections, setSections] = useState<any>();
+   const [sections, setSections] = useState<Record<string, any[]>>({
+      [SectionObj.SHARE_PRICE_SECTION]: [],
+      [SectionObj.FUNDAMENTALS_SECTION]: [],
+      [SectionObj.INCOME_STATEMENT_SECTION]: [],
+      [SectionObj.INVESTMENT_SECTION]: [],
+      [SectionObj.BALANCE_SHEET_SECTION]: [],
+      [SectionObj.SAHREHOLDING_PATTERN_SECTION]: [],
+      [SectionObj.PROMOTERS_AND_MANAGEMENT_SECTION]: []
+   });
+   const [unknownSections, setUnknownSections] = useState<Record<string, any[]>>({});
 
    useEffect(() => {
       _getSections();
@@ -27,18 +36,20 @@ export default function Home() {
 
    const _getSections = async () => {
       try {
-         console.log('hello');
          const resp = await getSections();
-         const sectionMap = new Map(
-            resp.map((section: ISection) => {
-               return [section.sectionName, section.data];
-            })
+         const updatedSections = resp.reduce(
+            (acc: Record<string, any[]>, section: ISection) => {
+               if (Object.values(SectionObj).includes(section.sectionName)) {
+                  acc[section.sectionName] = section.data ?? [];
+               } else {
+                  setUnknownSections((prev) => ({ ...prev, [section.sectionName]: section.data }));
+               }
+               return acc;
+            },
+            {} as Record<string, any[]>
          );
-
-         setSections(sectionMap);
-      } catch (error) {
-      } finally {
-      }
+         setSections((prev) => ({ ...prev, ...updatedSections }));
+      } catch (error) {}
    };
 
    return (
@@ -48,15 +59,13 @@ export default function Home() {
          <Box w={'80%'} m={'auto'}>
             {/* SHARE_PRICE_SECTION */}
             <Grid gridTemplateColumns={{ base: '1fr', md: '1.9fr 1.1fr' }} gapX={20} mt={20}>
-               <LineChart data={sections?.[SectionObj.SHARE_PRICE_SECTION]} />
+               <LineChart sectionData={sections?.[SectionObj.SHARE_PRICE_SECTION]} />
                <BuyOrSellForm />
             </Grid>
 
             {/* FUNDAMENTALS_SECTION */}
-            {sections?.[SectionObj.FUNDAMENTALS_SECTION] && (
-               <Box w="70%">
-                  <Fundamentals data={sections?.[SectionObj.FUNDAMENTALS_SECTION]} />
-               </Box>
+            {sections?.[SectionObj.FUNDAMENTALS_SECTION]?.length && (
+               <Fundamentals sectionData={sections?.[SectionObj.FUNDAMENTALS_SECTION]} />
             )}
 
             {/* FINANTIALS_SECTION */}
@@ -67,23 +76,25 @@ export default function Home() {
             />
 
             {/* SAHREHOLDING_PATTERN_SECTION  */}
-            {sections?.[SectionObj.SAHREHOLDING_PATTERN_SECTION] && (
+            {sections?.[SectionObj.SAHREHOLDING_PATTERN_SECTION]?.length && (
                <Box w="70%">
-                  <SectionTable headers={['Shareholding Pattern', '2021', '2022', 'temp']} />
+                  <SectionTable sectionHeader="Shareholding Pattern" tableData={sections?.[SectionObj.SAHREHOLDING_PATTERN_SECTION]} />
                </Box>
             )}
 
             {/* PROMOTERS_AND_MANAGEMENT_SECTION */}
-            {sections?.[SectionObj.PROMOTERS_AND_MANAGEMENT_SECTION] && (
+            {sections?.[SectionObj.PROMOTERS_AND_MANAGEMENT_SECTION]?.length && (
                <Box w="70%">
-                  <SectionTable headers={['Promoters & Management', '2021', '2022', 'temp']} />
+                  <SectionTable />
                </Box>
             )}
 
-            {/* OTHER_SECTIONS */}
-            <Box mt={10} w="70%">
-               <SectionTable headers={['Shareholding Pattern', '2021', '2022', 'temp']} />
-            </Box>
+            {/*  this is for unknown sections */}
+            {Object.keys(unknownSections).map((sectionName) => (
+               <Box w="70%" key={sectionName}>
+                  <SectionTable sectionHeader={sectionName} tableData={unknownSections[sectionName]} />
+               </Box>
+            ))}
          </Box>
 
          {/* FAQ_SECTION */}

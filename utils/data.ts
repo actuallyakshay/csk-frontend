@@ -1,4 +1,4 @@
-import { IFaq } from '@/types';
+import { IFaq, INavLinks } from '@/types';
 
 // * INFO:: THESE ARE THE STATIC DATA THAT WILL BE USED IN THE PROJECT
 
@@ -62,17 +62,17 @@ export const Blogs = [
    },
    {
       id: 2,
-      title: 'A Beginner’s Guide to Buying Unlisted Shares in India',
+      title: '10 Tips to Evaluate Unlisted Share Price Before Investing',
       description:
-         'Investing in unlisted shares is gaining traction among investors in India. These shares belong to private companies that are not listed on prominent stock exchanges like the NSE (National Stock Exchange) or BSE (Bombay Stock Exchange).....',
+         'Investing in unlisted shares can be challenging, as these shares are not traded on stock exchanges and require careful evaluation....',
       image: 'https://cdn.prod.website-files.com/66dab781497d9a528975cd7a/679cac743d1dc2e1cafce757_679ca5b2e573df26c838e759_116602-min-p-800.avif', // Replace with actual image path
       link: 'https://www.unlistedsharesindia.com/our-blogs/a-beginners-guide-to-buying-unlisted-shares-in-india'
    },
    {
       id: 3,
-      title: 'Top Factors That Influence Unlisted Share Price in 2025',
+      title: '10 Tips to Evaluate Unlisted Share Price Before Investing',
       description:
-         'Unlisted shares are becoming more common as an investment option in Indian markets. Unlike listed shares, which are bought and sold on the stock exchange, unlisted shares don’t have an easily accessible price.....',
+         'Investing in unlisted shares can be challenging, as these shares are not traded on stock exchanges and require careful evaluation....',
       image: 'https://cdn.prod.website-files.com/66dab781497d9a528975cd7a/679cac8bd306e05901ffadf9_679ca4e89ed402fd777e3440_18258-min-p-800.avif', // Replace with actual image path
       link: 'https://www.unlistedsharesindia.com/our-blogs/top-factors-that-influence-unlisted-share-price-in-2025'
    }
@@ -95,3 +95,9 @@ export const WHATSAPP_URL = 'https://api.whatsapp.com/send/?phone=919355935530&t
 
 export const TNC_URL = 'https://www.unlistedsharesindia.com/term-conditions';
 export const PRIVACY_URL = 'https://www.unlistedsharesindia.com/privacy-policy';
+
+export const navLinks: INavLinks[] = [
+   { name: 'Unlisted Shares', href: 'https://www.unlistedsharesindia.com/unlisted-share-price' },
+   { name: 'Our Blogs', href: 'https://www.unlistedsharesindia.com/our-blogs' },
+   { name: 'Contact Us', href: 'https://www.unlistedsharesindia.com/contact-us' }
+];

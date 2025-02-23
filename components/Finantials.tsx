@@ -8,9 +8,10 @@ interface IProps {
 }
 
 const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatement }) => {
+   console.log({ balanceSheet, investment, incomeStatement });
    return (
       <Box w="70%">
-         <Text fontSize={24} fontWeight={600} mb={10} color={'#181818'} pb={2}>
+         <Text fontSize={20} fontWeight={600} mb={4} color={'#181818'} pb={2}>
             Financials (In Cr)
          </Text>
          <Tabs.Root rounded={'15px'} defaultValue={'Income Statement'}>
@@ -28,9 +29,7 @@ const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatemen
                      value={item}
                      color={'#757575'}
                      _selected={{
-                        color: '#34c759',
-                        borderBottomWidth: '3px',
-                        borderBottomColor: '#34c759' // ✅ Works better than `borderBottom`
+                        color: '#34c759'
                      }}
                   >
                      {item}
@@ -38,13 +37,13 @@ const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatemen
                ))}
             </Tabs.List>
             <Tabs.Content value="Income Statement">
-               <SectionTable headers={['Shareholding Pattern', '2021', '2022', 'temp']} />
+               <SectionTable tableData={incomeStatement} />
             </Tabs.Content>
             <Tabs.Content value="Balance Sheet">
-               <SectionTable headers={['a', 'b', 'c', 'd']} />
+               <SectionTable tableData={balanceSheet} />
             </Tabs.Content>
             <Tabs.Content value="Cash Flow">
-               <SectionTable headers={['e', 'f', 'g', 'h']} />
+               <SectionTable tableData={incomeStatement} />
             </Tabs.Content>
          </Tabs.Root>
       </Box>

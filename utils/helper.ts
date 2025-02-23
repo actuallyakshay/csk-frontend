@@ -1,13 +1,24 @@
-import * as yup from 'yup';
+import { toast } from 'react-toastify';
 
-export const formSchema = yup.object().shape({
-   name: yup.string().trim().required('Name is required'),
-   email: yup.string().email('Invalid email format').required('Email is required'),
-   message: yup.string().trim().required('Message is required'),
-   phoneNumber: yup
-      .string()
-      .matches(/^[0-9]+$/, 'Phone number must be digits')
-      .required('Phone number is required'),
-   quantity: yup.number().positive('Quantity must be greater than zero').integer().required('Quantity is required'),
-   purposeOfQuery: yup.string().required('Purpose of query is required')
-});
+export const validateFileds = (input: any) => {
+   let isValidated = true;
+
+   const { name, email, quantity } = input;
+
+   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+   if (!email || !emailRegex.test(email)) {
+      toast.error('Please enter a valid email');
+      return false;
+   }
+
+   if (!name || !quantity) {
+      toast.error('Please fill all the fields');
+      return false;
+   }
+
+   return isValidated;
+};
+
+export const validatePhone = (number: string, format: string) => {
+   return format === String(number).replace(/[0-9]/g, '.');
+};

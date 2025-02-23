@@ -1,5 +1,5 @@
 import { BlogDescription, Blogs } from '@/utils';
-import { Box, Heading, Image, Link, SimpleGrid, Text, VStack } from '@chakra-ui/react';
+import { Box, Grid, Heading, Image, Link, Text, VStack } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
 const BlogSection = () => {
@@ -14,10 +14,16 @@ const BlogSection = () => {
             </Text>
          </VStack>
 
-         <SimpleGrid columns={{ base: 1, md: 2, lg: 3 }} spaceX={8} spaceY={8} mt={8}>
+         <Grid
+            templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
+            spaceX={8}
+            spaceY={8}
+            mt={8}
+            justifyItems={'flex-start'}
+         >
             {Blogs.map((blog) => (
                <Link as={NextLink} href={blog.link} key={blog.id}>
-                  <VStack bg="white" borderRadius="lg" overflow="hidden" align="start">
+                  <Box>
                      <Box overflow={'hidden'} rounded={'2xl'} transition="0.5s" w="full">
                         <Image
                            _hover={{ boxShadow: 'xl', transform: 'scale(1.1)', transition: '0.5s' }}
@@ -25,10 +31,10 @@ const BlogSection = () => {
                            alt={blog.title}
                            objectFit="cover"
                            w="full"
-                           h="330px"
+                           h="250px"
                         />
                      </Box>
-                     <Box p={4}>
+                     <Box py={4}>
                         <Heading fontSize={16} fontWeight={600}>
                            {blog.title}
                         </Heading>
@@ -36,10 +42,10 @@ const BlogSection = () => {
                            {blog.description}
                         </Text>
                      </Box>
-                  </VStack>
+                  </Box>
                </Link>
             ))}
-         </SimpleGrid>
+         </Grid>
       </Box>
    );
 };

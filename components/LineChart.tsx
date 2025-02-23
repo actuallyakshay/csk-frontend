@@ -1,45 +1,25 @@
-import { IChartData, ISection, ISharePrice, TimeFrame } from '@/types';
+import { IChartData, TimeFrame } from '@/types';
 import { CSK_LOGO } from '@/utils';
-import { Box, Button, Flex, HStack, Image, Text } from '@chakra-ui/react';
+import { Box, Flex, HStack, Image, Text } from '@chakra-ui/react';
 import { CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
 import { useState } from 'react';
 import { Line } from 'react-chartjs-2';
 
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
-const rawData = [
-   {
-      Type: 'Daily',
-      Labels: 'Mon, Tue, Wed, Thu, Fri, Sat, Sun',
-      Price: '20, 215, 210, 205, 200, 195, 190'
-   },
-   {
-      Type: 'Weekly',
-      Labels: 'Week 1, Week 2, Week 3, Week 4',
-      Price: '220, 210, 200, 185'
-   },
-   {
-      Type: 'Monthly',
-      Labels: 'Oct, Nov, Dec, Jan',
-      Price: '220, 210, 195, 185'
-   }
-];
-
 interface IProps {
-   data: object;
+   sectionData: Record<string, any>[];
 }
 
-const LineChart: React.FC<IProps> = () => {
+const LineChart: React.FC<IProps> = ({ sectionData }) => {
    const [timeFrame, setTimeFrame] = useState<TimeFrame>('daily');
 
-   // const rawData = data as ISharePrice[];
-
    const formattedData =
-      rawData?.reduce(
+      sectionData?.reduce(
          (acc, item) => {
-            acc[item?.Type?.toLowerCase()] = {
-               labels: item?.Labels.split(', ').map((label) => label.trim()),
-               data: item?.Price.split(', ').map((price) => parseFloat(price))
+            acc[item?.type?.toLowerCase()] = {
+               labels: item?.labels?.split(', ')?.map((label: string) => label.trim()),
+               data: item?.price?.split(', ')?.map((price: string) => parseFloat(price))
             };
             return acc;
          },
