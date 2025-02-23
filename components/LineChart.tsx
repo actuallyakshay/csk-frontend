@@ -1,4 +1,4 @@
-import { TimeFrame } from '@/types';
+import { IChartData, ISection, ISharePrice, TimeFrame } from '@/types';
 import { CSK_LOGO } from '@/utils';
 import { Box, Button, Flex, HStack, Image, Text } from '@chakra-ui/react';
 import { CategoryScale, Chart as ChartJS, Legend, LinearScale, LineElement, PointElement, Title, Tooltip } from 'chart.js';
@@ -25,38 +25,45 @@ const rawData = [
    }
 ];
 
-interface IProps {}
+interface IProps {
+   data: object;
+}
 
 const LineChart: React.FC<IProps> = () => {
    const [timeFrame, setTimeFrame] = useState<TimeFrame>('daily');
 
-   const formattedData = rawData.reduce(
-      (acc, item) => {
-         acc[item.Type.toLowerCase()] = {
-            labels: item.Labels.split(', ').map((label) => label.trim()),
-            data: item.Price.split(', ').map((price) => parseFloat(price))
-         };
-         return acc;
-      },
-      {} as Record<string, { labels: string[]; data: number[] }>
-   );
+   // const rawData = data as ISharePrice[];
 
-   const data = {
-      labels: formattedData[timeFrame].labels,
-      datasets: [
-         {
-            label: 'Stock Price',
-            data: formattedData[timeFrame].data,
-            borderColor: '#34c759',
-            backgroundColor: '#34c759',
-            pointBackgroundColor: '#34c759',
-            pointBorderColor: '#fff',
-            pointRadius: 5,
-            borderWidth: 3,
-            tension: 0.3
-         }
-      ]
-   };
+   const formattedData =
+      rawData?.reduce(
+         (acc, item) => {
+            acc[item?.Type?.toLowerCase()] = {
+               labels: item?.Labels.split(', ').map((label) => label.trim()),
+               data: item?.Price.split(', ').map((price) => parseFloat(price))
+            };
+            return acc;
+         },
+         {} as Record<string, IChartData>
+      ) || [];
+
+   const data = formattedData?.[timeFrame]
+      ? {
+           labels: formattedData[timeFrame].labels,
+           datasets: [
+              {
+                 label: 'Stock Price',
+                 data: formattedData[timeFrame].data,
+                 borderColor: '#34c759',
+                 backgroundColor: '#34c759',
+                 pointBackgroundColor: '#34c759',
+                 pointBorderColor: '#fff',
+                 pointRadius: 5,
+                 borderWidth: 3,
+                 tension: 0.3
+              }
+           ]
+        }
+      : { labels: [], datasets: [] };
 
    const options = {
       responsive: true,

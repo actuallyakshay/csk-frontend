@@ -1,6 +1,11 @@
+import { ISection } from '@/types';
 import { Box, Grid, GridItem, Text } from '@chakra-ui/react';
 
-const Fundamentals = () => {
+interface IProps {
+   data: any;
+}
+
+const Fundamentals: React.FC<IProps> = ({}) => {
    const data = [
       { label: 'Chennai Super Kings (CSK) Shares', value: '₹ 188' },
       { label: 'Market Cap (in cr)', value: '₹ 8271' },
@@ -27,7 +32,7 @@ const Fundamentals = () => {
          <Text fontSize="3xl" fontWeight={500} mb={4}>
             Fundamentals
          </Text>
-         <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gapX={20} gapY={6} fontSize={16} fontWeight={500}>
+         <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gapX={20} gapY={6} fontSize={15} fontWeight={500}>
             {data.map((item, index) => (
                <GridItem key={index} display="flex" justifyContent="space-between" py={1}>
                   <Text>{item.label}</Text>

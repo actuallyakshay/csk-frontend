@@ -1,7 +1,13 @@
 import { Box, Flex, Tabs, Text } from '@chakra-ui/react';
 import SectionTable from './SectionTable';
 
-const Finantials = () => {
+interface IProps {
+   incomeStatement: any;
+   investment: any;
+   balanceSheet: any;
+}
+
+const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatement }) => {
    return (
       <Box w="70%">
          <Text fontSize={24} fontWeight={600} mb={10} color={'#181818'} pb={2}>
