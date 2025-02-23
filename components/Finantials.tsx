@@ -14,8 +14,8 @@ const Finantials = () => {
                      w="full"
                      as={Flex}
                      justifyContent={'center'}
-                     fontSize={22}
-                     fontWeight={600}
+                     fontSize={18}
+                     fontWeight={500}
                      key={index}
                      py={8}
                      px={10}

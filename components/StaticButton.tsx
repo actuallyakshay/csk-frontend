@@ -9,16 +9,17 @@ const StaticButton = () => {
          <Button
             variant={'solid'}
             w={'100%'}
-            fontSize={'20px'}
+            fontSize={'18px'}
             fontWeight={600}
-            p={10}
+            px={6}
+            py={7}
             rounded={'99px'}
             backgroundColor={'#34c759'}
             color={'#fff'}
             border={'1px solid #0000001a'}
             _hover={{ backgroundColor: '#075E54' }}
          >
-            <Box h={8} w={8}>
+            <Box h={5} w={5}>
                <Image src={WHATSAPP_LOGO} />
             </Box>
             Get Connected Now

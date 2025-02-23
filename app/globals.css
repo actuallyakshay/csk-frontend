@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 :root {
    --background: #ffffff;
@@ -13,14 +14,14 @@
 body {
    color: var(--foreground);
    background: var(--background);
-   font-family: 'Inter 28 Pt', Arial, sans-serif;
+   font-family: 'Inter', serif;
 }
 
 .custom-input {
    border: 1px solid var(--input-border-color);
    outline: '#34c759';
    border-radius: 10px;
-   font-size: 20px;
+   font-size: 18px;
    color: var(--secondry-color);
 }
 

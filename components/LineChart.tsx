@@ -87,12 +87,12 @@ const LineChart: React.FC<IProps> = () => {
                <Image src={CSK_LOGO} alt="Chennai Super Kings Logo" borderRadius="md" />
             </Box>
             <Box>
-               <Text fontSize={'2xl'} fontWeight="bold">
+               <Text fontSize={'xl'} fontWeight={500} mt={4}>
                   Chennai Super Kings (CSK) Share Price
                </Text>
 
                <Flex align="center" gap={4} mt={1}>
-                  <Text fontSize="2xl" fontWeight="bold">
+                  <Text fontSize="xl" fontWeight="bold">
                      ₹ 188
                   </Text>
                   <Text fontSize="md" color={'#980003'}>
@@ -108,7 +108,7 @@ const LineChart: React.FC<IProps> = () => {
             </Box>
          </Flex>
          <Box>
-            <HStack wrap="wrap" gap="6" justify={'center'} mb={4}>
+            <HStack wrap="wrap" gap="6" justify={'center'} my={4}>
                {(['daily', 'weekly', 'monthly'] as TimeFrame[]).map((el) => (
                   <Text
                      cursor={'pointer'}
@@ -119,7 +119,7 @@ const LineChart: React.FC<IProps> = () => {
                      backgroundColor={el === timeFrame ? '#34c759' : 'transparent'}
                      px={4}
                      py={1}
-                     fontSize={16}
+                     fontSize={12}
                      rounded={'full'}
                   >
                      {el.charAt(0).toUpperCase() + el.slice(1)}

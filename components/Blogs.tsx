@@ -9,7 +9,7 @@ const BlogSection = () => {
             <Text fontSize="3xl" fontWeight="bold">
                Our Blogs
             </Text>
-            <Text fontSize={20} fontWeight={600} color="#757575">
+            <Text fontSize={16} fontWeight={500} color="#757575">
                {BlogDescription}
             </Text>
          </VStack>
@@ -29,10 +29,10 @@ const BlogSection = () => {
                         />
                      </Box>
                      <Box p={4}>
-                        <Heading fontSize={20} fontWeight="bold">
+                        <Heading fontSize={16} fontWeight={600}>
                            {blog.title}
                         </Heading>
-                        <Text fontSize={20} fontWeight={500} color={'#757575'} mt={2}>
+                        <Text fontSize={16} fontWeight={500} color={'#757575'} mt={2}>
                            {blog.description}
                         </Text>
                      </Box>

@@ -32,18 +32,18 @@ const FAQ = () => {
                      paddingY={6}
                   >
                      <Box position="relative">
-                        <AccordionItemTrigger fontSize={24} fontWeight={600}>
+                        <AccordionItemTrigger fontSize={18} fontWeight={500}>
                            {item.question}
                         </AccordionItemTrigger>
                         <AbsoluteCenter axis="vertical" insetEnd="0">
                            {activeItem === item.question ? (
-                              <IoIosArrowDropup style={{ strokeWidth: 4 }} size={38} color="#98a2b3" />
+                              <IoIosArrowDropup style={{ strokeWidth: 4 }} size={26} color="#98a2b3" />
                            ) : (
-                              <IoIosAddCircleOutline style={{ strokeWidth: 4 }} size={38} color="#98a2b3" />
+                              <IoIosAddCircleOutline style={{ strokeWidth: 4 }} size={26} color="#98a2b3" />
                            )}
                         </AbsoluteCenter>
                      </Box>
-                     <AccordionItemContent paddingY={6} borderBottomRadius={0} fontSize={20} color={'#757575'} fontWeight={500}>
+                     <AccordionItemContent paddingY={6} borderBottomRadius={0} fontSize={16} color={'#757575'} fontWeight={500}>
                         {item.answer}
                      </AccordionItemContent>
                   </AccordionItem>

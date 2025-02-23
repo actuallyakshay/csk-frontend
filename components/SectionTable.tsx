@@ -14,7 +14,7 @@ const SectionTable: React.FC<IProps> = ({ headers, sectionHeader }) => {
             </Text>
          )}
 
-         <Table.Root size={'lg'} fontSize={22} fontWeight={600} border={'1px solid #ddd'}>
+         <Table.Root size={'lg'} fontSize={16} fontWeight={500} border={'1px solid #ddd'}>
             <Table.Header>
                <Table.Row>
                   {headers.map((header, index) => (
@@ -35,7 +35,7 @@ const SectionTable: React.FC<IProps> = ({ headers, sectionHeader }) => {
             <Table.Body>
                {items.map((item) => (
                   <Table.Row key={item.id} border={'1px solid #ddd'} color={'#181818'}>
-                     <Table.Cell py={6}>{item.name}</Table.Cell>
+                     <Table.Cell py={4}>{item.name}</Table.Cell>
                      <Table.Cell>{item.category}</Table.Cell>
                      <Table.Cell>{item.temp}</Table.Cell>
                      <Table.Cell textAlign="end">{item.price}</Table.Cell>

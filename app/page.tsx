@@ -37,7 +37,7 @@ export default function Home() {
          <Navbar />
          <CSKHead />
          <Box w={'80%'} m={'auto'}>
-            <Grid gridTemplateColumns={{ base: '1fr', md: '2fr 1fr' }} gapX={20} mt={20}>
+            <Grid gridTemplateColumns={{ base: '1fr', md: '1.9fr 1.1fr' }} gapX={20} mt={20}>
                <LineChart />
                <BuyOrSellForm />
             </Grid>

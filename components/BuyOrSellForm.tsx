@@ -17,7 +17,7 @@ const BuyOrSellForm = () => {
                {['Buy', 'Sell'].map((item, index) => (
                   <Tabs.Trigger
                      fontSize={22}
-                     fontWeight={600}
+                     fontWeight={500}
                      key={index}
                      py={8}
                      px={10}
@@ -32,10 +32,10 @@ const BuyOrSellForm = () => {
                   </Tabs.Trigger>
                ))}
             </Tabs.List>
-            <Tabs.Content value="Buy" py={10} px={10}>
+            <Tabs.Content value="Buy" py={10} px={7}>
                <Form btnTxt={EQueryPurpose.BUY} />
             </Tabs.Content>
-            <Tabs.Content value="Sell" py={10} px={10}>
+            <Tabs.Content value="Sell" py={10} px={7}>
                <Form btnTxt={EQueryPurpose.SELL} />
             </Tabs.Content>
          </Tabs.Root>
@@ -76,19 +76,19 @@ const Form: React.FC<IProps> = ({ btnTxt }) => {
    return (
       <VStack spaceY={4} as="form" onSubmit={handleSubmit(onSubmit)}>
          <Flex w={'100%'} flexDirection={'column'}>
-            <Text fontSize="2xl" fontWeight="bold" mb={4}>
+            <Text fontSize="xl" fontWeight={500} mb={4}>
                Chennai Super Kings (CSK) Shares
             </Text>
-            <Text fontSize="2xl" fontWeight="bold" mb={4} color={'#757575'}>
+            <Text fontSize="xl" fontWeight={500} mb={4} color={'#757575'}>
                {btnTxt === EQueryPurpose.BUY ? '₹ 188' : '* Best In Industry'}
             </Text>
          </Flex>
 
-         <Input pl={3} className="custom-input" size="2xl" px={2} py={2} placeholder="Name" {...register('name')} />
+         <Input pl={3} className="custom-input" size="xl" px={2} py={2} placeholder="Name" {...register('name')} />
          <Input
             {...register('email')}
             className="custom-input"
-            size="2xl"
+            size="xl"
             px={2}
             pl={3}
             py={2}
@@ -108,13 +108,13 @@ const Form: React.FC<IProps> = ({ btnTxt }) => {
             }}
          />
 
-         <NumberInputRoot size={'lg'} width="full">
+         <NumberInputRoot size={'md'} width="full">
             <NumberInputField
                min={0}
                max={1000000}
                className="custom-input"
                p={2}
-               py={8}
+               py={6}
                pl={3}
                placeholder="Qunatity"
                {...register('quantity')}

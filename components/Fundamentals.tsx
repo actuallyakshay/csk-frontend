@@ -24,10 +24,10 @@ const Fundamentals = () => {
 
    return (
       <Box p={5} bg="white">
-         <Text fontSize="3xl" fontWeight="bold" mb={4}>
+         <Text fontSize="3xl" fontWeight={500} mb={4}>
             Fundamentals
          </Text>
-         <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gapX={20} gapY={6} fontSize={22} fontWeight={600}>
+         <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gapX={20} gapY={6} fontSize={16} fontWeight={500}>
             {data.map((item, index) => (
                <GridItem key={index} display="flex" justifyContent="space-between" py={1}>
                   <Text>{item.label}</Text>
