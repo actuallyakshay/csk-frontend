@@ -85,7 +85,10 @@ export default function Home() {
             {/* PROMOTERS_AND_MANAGEMENT_SECTION */}
             {sections?.[SectionObj.PROMOTERS_AND_MANAGEMENT_SECTION]?.length && (
                <Box w="60%">
-                  <SectionTable />
+                  <SectionTable
+                     sectionHeader="Promoters or Management"
+                     tableData={sections?.[SectionObj.PROMOTERS_AND_MANAGEMENT_SECTION]}
+                  />
                </Box>
             )}
 
