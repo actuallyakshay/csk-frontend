@@ -2,15 +2,14 @@ import { Box, Flex, Tabs, Text } from '@chakra-ui/react';
 import SectionTable from './SectionTable';
 
 interface IProps {
-   incomeStatement: any;
-   investment: any;
-   balanceSheet: any;
+   incomeStatement: Record<string, any>[];
+   investment: Record<string, any>[];
+   balanceSheet: Record<string, any>[];
 }
 
 const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatement }) => {
-   console.log({ balanceSheet, investment, incomeStatement });
    return (
-      <Box w="70%">
+      <Box w="60%">
          <Text fontSize={20} fontWeight={600} mb={4} color={'#181818'} pb={2}>
             Financials (In Cr)
          </Text>
@@ -21,7 +20,7 @@ const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatemen
                      w="full"
                      as={Flex}
                      justifyContent={'center'}
-                     fontSize={18}
+                     fontSize={17}
                      fontWeight={500}
                      key={index}
                      py={8}
@@ -37,13 +36,13 @@ const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatemen
                ))}
             </Tabs.List>
             <Tabs.Content value="Income Statement">
-               <SectionTable tableData={incomeStatement} />
+               <SectionTable tableData={investment} showNoData />
             </Tabs.Content>
             <Tabs.Content value="Balance Sheet">
-               <SectionTable tableData={balanceSheet} />
+               <SectionTable tableData={balanceSheet} showNoData />
             </Tabs.Content>
             <Tabs.Content value="Cash Flow">
-               <SectionTable tableData={incomeStatement} />
+               <SectionTable tableData={incomeStatement} showNoData />
             </Tabs.Content>
          </Tabs.Root>
       </Box>

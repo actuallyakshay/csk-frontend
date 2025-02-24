@@ -3,9 +3,10 @@ import { Box, Table, Text } from '@chakra-ui/react';
 interface IProps {
    sectionHeader?: string;
    tableData?: Record<string, any>[];
+   showNoData?: boolean;
 }
 
-const SectionTable: React.FC<IProps> = ({ sectionHeader, tableData }) => {
+const SectionTable: React.FC<IProps> = ({ sectionHeader, tableData, showNoData }) => {
    const headers = tableData?.length ? Object.keys(tableData[0]) : [];
 
    return headers?.length ? (
@@ -48,6 +49,12 @@ const SectionTable: React.FC<IProps> = ({ sectionHeader, tableData }) => {
             </Table.Root>
          </Box>
       </>
+   ) : showNoData ? (
+      <Box>
+         <Text fontSize={16} fontWeight={500} color={'#757575'} textAlign={'center'} mt={4}>
+            No data available
+         </Text>
+      </Box>
    ) : (
       <></>
    );

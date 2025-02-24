@@ -77,21 +77,21 @@ export default function Home() {
 
             {/* SAHREHOLDING_PATTERN_SECTION  */}
             {sections?.[SectionObj.SAHREHOLDING_PATTERN_SECTION]?.length && (
-               <Box w="70%">
+               <Box w="60%">
                   <SectionTable sectionHeader="Shareholding Pattern" tableData={sections?.[SectionObj.SAHREHOLDING_PATTERN_SECTION]} />
                </Box>
             )}
 
             {/* PROMOTERS_AND_MANAGEMENT_SECTION */}
             {sections?.[SectionObj.PROMOTERS_AND_MANAGEMENT_SECTION]?.length && (
-               <Box w="70%">
+               <Box w="60%">
                   <SectionTable />
                </Box>
             )}
 
             {/*  this is for unknown sections */}
             {Object.keys(unknownSections).map((sectionName) => (
-               <Box w="70%" key={sectionName}>
+               <Box w="60%" key={sectionName}>
                   <SectionTable sectionHeader={sectionName} tableData={unknownSections[sectionName]} />
                </Box>
             ))}

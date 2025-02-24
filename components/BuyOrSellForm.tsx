@@ -70,14 +70,13 @@ const Form: React.FC<IProps> = ({ btnTxt }) => {
    };
 
    const onSubmit = async () => {
-      console.log({ phoneInvalid });
       if (!validateFileds(input) || phoneInvalid) return;
-
       setLoading(true);
       try {
          await postQuery(input);
          toast.success('Query Submitted Successfully');
-      } catch (error) {
+      } catch (error: any) {
+         toast.error(error?.message?.[0]);
       } finally {
          setLoading(false);
       }
@@ -123,7 +122,8 @@ const Form: React.FC<IProps> = ({ btnTxt }) => {
             specialLabel={''}
             enableSearch={true}
             country={'in'}
-            value={'9568950421'}
+            value={input.phoneNumber}
+            placeholder="Phone Number"
          />
 
          <NumberInputRoot size={'md'} width="full">

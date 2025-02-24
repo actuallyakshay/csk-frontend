@@ -6,7 +6,7 @@ interface IProps {
 
 const Fundamentals: React.FC<IProps> = ({ sectionData }) => {
    return (
-      <Box py={5} mb={10} bg="white" w={'70%'}>
+      <Box py={5} mb={10} bg="white" w={'60%'}>
          <Text fontSize="3xl" fontWeight={500} mb={4}>
             Fundamentals
          </Text>

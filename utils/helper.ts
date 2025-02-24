@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 export const validateFileds = (input: any) => {
    let isValidated = true;
 
-   const { name, email, quantity } = input;
+   const { name, email, quantity, phoneNumber } = input;
 
    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
    if (!email || !emailRegex.test(email)) {
@@ -13,6 +13,11 @@ export const validateFileds = (input: any) => {
 
    if (!name || !quantity) {
       toast.error('Please fill all the fields');
+      return false;
+   }
+
+   if (!phoneNumber) {
+      toast.error('Please enter a valid phone number');
       return false;
    }
 
