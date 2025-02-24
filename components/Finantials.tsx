@@ -9,8 +9,8 @@ interface IProps {
 
 const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatement }) => {
    return (
-      <Box w="60%">
-         <Text fontSize={20} fontWeight={600} mb={4} color={'#181818'} pb={2}>
+      <Box w={['95%', '80%', '60%']} m={['auto', 'auto', 0]}>
+         <Text fontSize={20} fontWeight={[500, 600]} mb={4} color={'#181818'} pb={2}>
             Financials (In Cr)
          </Text>
          <Tabs.Root rounded={'15px'} defaultValue={'Income Statement'}>
@@ -20,7 +20,7 @@ const Finantials: React.FC<IProps> = ({ balanceSheet, investment, incomeStatemen
                      w="full"
                      as={Flex}
                      justifyContent={'center'}
-                     fontSize={17}
+                     fontSize={[14, 17]}
                      fontWeight={500}
                      key={index}
                      py={8}

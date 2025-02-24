@@ -17,7 +17,7 @@ const FAQ = () => {
 
    return (
       <Box>
-         <Heading as="h1" fontSize={42} textAlign="center" mb={10}>
+         <Heading as="h1" fontSize={[30, 35, 42]} textAlign="center" mb={10}>
             <strong>FAQ's</strong>
          </Heading>
          <VStack>
@@ -27,15 +27,16 @@ const FAQ = () => {
                      borderBottomRadius={0}
                      borderBottom={'1px solid #757575'}
                      key={index}
+                     alignItems={['center', 'flex-start']}
                      value={item.question}
                      borderColor="gray.200"
                      paddingY={6}
                   >
                      <Box position="relative">
-                        <AccordionItemTrigger fontSize={18} fontWeight={500}>
+                        <AccordionItemTrigger fontSize={[16, 18]} fontWeight={500}>
                            {item.question}
                         </AccordionItemTrigger>
-                        <AbsoluteCenter axis="vertical" insetEnd="0">
+                        <AbsoluteCenter axis="vertical" insetEnd="0" display={['none', 'none', 'flex']}>
                            {activeItem === item.question ? (
                               <IoIosArrowDropup style={{ strokeWidth: 4 }} size={26} color="#98a2b3" />
                            ) : (

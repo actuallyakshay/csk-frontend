@@ -56,9 +56,9 @@ export default function Home() {
       <Box position={'relative'}>
          <Navbar />
          <CSKHead />
-         <Box w={'80%'} m={'auto'}>
+         <Box w={['98%', '90%', '80%']} m={'auto'}>
             {/* SHARE_PRICE_SECTION */}
-            <Grid gridTemplateColumns={{ base: '1fr', md: '1.9fr 1.1fr' }} gapX={20} mt={20}>
+            <Grid gridTemplateColumns={{ base: '1fr', md: '1.9fr 1.1fr' }} gapX={20} gapY={[5, 5, 0]} mt={20}>
                <LineChart sectionData={sections?.[SectionObj.SHARE_PRICE_SECTION]} />
                <BuyOrSellForm />
             </Grid>
@@ -77,14 +77,14 @@ export default function Home() {
 
             {/* SAHREHOLDING_PATTERN_SECTION  */}
             {sections?.[SectionObj.SAHREHOLDING_PATTERN_SECTION]?.length && (
-               <Box w="60%">
+               <Box w={['98%', '80%', '60%']} m={['auto', 'auto', 0]}>
                   <SectionTable sectionHeader="Shareholding Pattern" tableData={sections?.[SectionObj.SAHREHOLDING_PATTERN_SECTION]} />
                </Box>
             )}
 
             {/* PROMOTERS_AND_MANAGEMENT_SECTION */}
             {sections?.[SectionObj.PROMOTERS_AND_MANAGEMENT_SECTION]?.length && (
-               <Box w="60%">
+               <Box w={['98%', '80%', '60%']} m={['auto', 'auto', 0]}>
                   <SectionTable
                      sectionHeader="Promoters or Management"
                      tableData={sections?.[SectionObj.PROMOTERS_AND_MANAGEMENT_SECTION]}
@@ -94,14 +94,14 @@ export default function Home() {
 
             {/*  this is for unknown sections */}
             {Object.keys(unknownSections).map((sectionName) => (
-               <Box w="60%" key={sectionName}>
+               <Box w={['98%', '80%', '60%']} m={['auto', 'auto', 0]} key={sectionName}>
                   <SectionTable sectionHeader={sectionName} tableData={unknownSections[sectionName]} />
                </Box>
             ))}
          </Box>
 
          {/* FAQ_SECTION */}
-         <Box w={['100%', '80%', '60%']} mx="auto" mt={20}>
+         <Box w={['95%', '80%', '60%']} mx="auto" mt={20}>
             <FAQ />
          </Box>
 

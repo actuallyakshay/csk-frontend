@@ -4,19 +4,19 @@ import NextLink from 'next/link';
 
 const BlogSection = () => {
    return (
-      <Box w={'80%'} m="auto" py={10}>
+      <Box w={['95%', '80%', '80%']} m="auto" py={10}>
          <VStack spaceX={4} spaceY={4} textAlign="center">
             <Text fontSize="3xl" fontWeight="bold">
                Our Blogs
             </Text>
-            <Text fontSize={16} fontWeight={500} color="#757575">
+            <Text fontSize={[14, 16]} fontWeight={500} color="#757575">
                {BlogDescription}
             </Text>
          </VStack>
 
          <Grid
             templateColumns={{ base: '1fr', md: 'repeat(2, 1fr)', lg: 'repeat(3, 1fr)' }}
-            spaceX={8}
+            spaceX={[0, 4, 8]}
             spaceY={8}
             mt={8}
             justifyItems={'flex-start'}

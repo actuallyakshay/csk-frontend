@@ -68,7 +68,7 @@ const LineChart: React.FC<IProps> = ({ sectionData }) => {
    };
 
    return (
-      <Box w="full" h="full">
+      <Box w={['98%', '80%', '100%']} m={['auto', 'auto', 0]} h="full">
          <Flex flexDirection={'column'} justify={'start'}>
             <Box boxSize="120px" flexShrink={0}>
                <Image src={CSK_LOGO} alt="Chennai Super Kings Logo" borderRadius="md" />

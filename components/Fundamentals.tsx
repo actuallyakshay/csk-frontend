@@ -6,8 +6,8 @@ interface IProps {
 
 const Fundamentals: React.FC<IProps> = ({ sectionData }) => {
    return (
-      <Box py={5} mb={10} bg="white" w={'60%'}>
-         <Text fontSize="3xl" fontWeight={500} mb={4}>
+      <Box py={5} mb={10} bg="white" w={['98%', '80%', '60%']} m={['auto', 'auto', 0]}>
+         <Text fontSize={['2xl', '3xl']} fontWeight={500} mb={4}>
             Fundamentals
          </Text>
          <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gapX={20} gapY={6} fontSize={15} fontWeight={500}>

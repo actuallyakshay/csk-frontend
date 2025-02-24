@@ -9,10 +9,10 @@ const StaticButton = () => {
          <Button
             variant={'solid'}
             w={'100%'}
-            fontSize={'18px'}
+            fontSize={['14px', '16px', '18px']}
             fontWeight={600}
-            px={6}
-            py={7}
+            px={[2, 4, 6]}
+            py={[2, 3, 7]}
             rounded={'99px'}
             backgroundColor={'#34c759'}
             color={'#fff'}
