@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const SectionTable: React.FC<IProps> = ({ sectionHeader, tableData, showNoData }) => {
-   const headers = tableData?.length ? Object.keys(tableData[0]) : [];
+   const headers = tableData?.length ? Object.keys(tableData?.[0]).reverse() : [];
 
    return headers?.length ? (
       <>
@@ -20,7 +20,7 @@ const SectionTable: React.FC<IProps> = ({ sectionHeader, tableData, showNoData }
             <Table.Root size={'lg'} fontSize={16} fontWeight={500}>
                <Table.Header>
                   <Table.Row>
-                     {headers.map((header, index) => (
+                     {headers?.map((header, index) => (
                         <Table.ColumnHeader
                            padding={'10px'}
                            borderBottom={'1px solid #ddd'}
@@ -38,9 +38,9 @@ const SectionTable: React.FC<IProps> = ({ sectionHeader, tableData, showNoData }
                <Table.Body>
                   {tableData?.map((item) => (
                      <Table.Row key={item.id} borderBottom={'1px solid #ddd'} color={'#181818'}>
-                        {headers.map((header, index) => (
+                        {headers?.map((header, index) => (
                            <Table.Cell textAlign={index === headers.length - 1 ? 'end' : 'start'} py={4} key={index}>
-                              {item[header]}
+                              {item?.[header]}
                            </Table.Cell>
                         ))}
                      </Table.Row>
